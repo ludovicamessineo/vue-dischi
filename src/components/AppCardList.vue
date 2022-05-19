@@ -1,6 +1,9 @@
 <template>  
   <div class="container mt-5">
-     <div class="row row-cols-5 g-2">
+    <div v-if="loading">
+    <AppLoading />
+    </div>
+     <div v-else class="row row-cols-5 g-2">
        <AppAlbumCard v-for="(item, index) in albums" :key="index" :album="item"/>
      </div> 
   </div>
@@ -8,16 +11,19 @@
 
 <script>
 import AppAlbumCard from './AppAlbumCard.vue'
+import AppLoading from './AppLoading.vue'
 import axios from "axios"
 
 export default {
     name: "AppCardList",
     components: {
-        AppAlbumCard
+        AppAlbumCard,
+        AppLoading
     },
     data() {
       return {
-        albums: []
+        albums: [],
+        loading: true
       }
     },
     created() {
@@ -25,6 +31,7 @@ export default {
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((resp) => {
         this.albums = resp.data.response;
+        this.loading = false
       }
       )
     }
