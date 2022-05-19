@@ -1,6 +1,6 @@
 <template>  
   <div class="container mt-5">
-     <div class="row row-cols-5">
+     <div class="row row-cols-5 g-2">
        <AppAlbumCard v-for="(item, index) in albums" :key="index" :album="item"/>
      </div> 
   </div>

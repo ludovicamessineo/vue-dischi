@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-center">
+  <div class="card text-center p-3">
       <img :src="album.poster" alt="">
       <h2>{{ album.title }}</h2>
       <small>{{ album.author }}</small>
@@ -20,8 +20,14 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+
+  background-color: #2e3a46;
+  color: grey;
+
   h2 {
     font-size: .9rem;
+    color: white;
+    margin-top: .5rem;
   }
 }
 </style>
