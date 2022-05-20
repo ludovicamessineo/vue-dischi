@@ -1,24 +1,29 @@
 <template>  
   <div class="container mt-5">
+    <div class="ms_container">
     <div v-if="loading">
     <AppLoading />
     </div>
-     <div v-else class="row row-cols-5 g-2">
+     <div v-else class="row row-cols-5">
        <AppAlbumCard v-for="(item, index) in albums" :key="index" :album="item"/>
      </div> 
+
+    </div>
   </div>
 </template>
 
 <script>
 import AppAlbumCard from './AppAlbumCard.vue'
 import AppLoading from './AppLoading.vue'
+import AppSelect from './AppSelect.vue'
 import axios from "axios"
 
 export default {
     name: "AppCardList",
     components: {
         AppAlbumCard,
-        AppLoading
+        AppLoading,
+        AppSelect
     },
     data() {
       return {
@@ -39,5 +44,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.ms_container {
+  width: 70%;
+  margin: 0 auto;
+}
 </style>
